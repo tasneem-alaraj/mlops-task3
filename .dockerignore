@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.git/
+.gitignore
+notebooks/
+artifacts/*.csv
+artifacts/eda_plots/
+artifacts/features/processed_data.npz
+tests/
+requirements-dev.txt
+README.md

@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # 1. Database Service (PostgreSQL)
+  postgres:
+    image: postgres:15-alpine
+    container_name: olist_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: olist_user
+      POSTGRES_PASSWORD: olist_password
+      POSTGRES_DB: olist_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U olist_user -d olist_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. Database UI (pgAdmin)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: olist_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@olist.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+  # 3. Machine Learning Inference Service (FastAPI)
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: olist_inference_api
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

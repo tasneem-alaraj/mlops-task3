@@ -1,0 +1,21 @@
+app:
+  name: "delivery-delay-service"
+  version: "1.0.0"
+
+paths:
+  preprocessor_path: "models/preprocessor.joblib"
+  model_path: "models/best_model.joblib"
+  logs_dir: "logs"
+
+features:
+  numeric:
+    - "total_price"
+    - "total_freight"
+    - "total_items_count"
+    - "total_payment_value"
+    - "payment_installments_max"
+    - "purchase_dayofweek"
+    - "purchase_hour"
+    - "estimated_delivery_duration_days"
+  categorical:
+    - "customer_state"

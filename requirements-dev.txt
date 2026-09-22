@@ -1,0 +1,8 @@
+-r requirements.txt
+pytest>=7.4.0
+httpx>=0.24.0
+flake8>=6.0.0
+black>=23.7.0
+mlflow>=2.6.0
+dvc>=3.0.0
+great_expectations>=0.17.0
