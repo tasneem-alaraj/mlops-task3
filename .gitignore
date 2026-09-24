@@ -1,11 +1,26 @@
+# Virtual Environments
 venv/
+env/
+
+# Python & Pytest Cache
 __pycache__/
-*.pyc
+*.py[cod]
 .pytest_cache/
+.ipynb_checkpoints/
+
+# Data & Heavy Artifacts (Tracked via DVC instead)
+data/
+artifacts/
+
+# MLflow Tracking & Local Database
+mlflow.db
+mlruns/
+
+# Application & Audit Logs
 logs/*.log
 logs/*.jsonl
+logs/
+
+# OS Specific
 .DS_Store
-data/*.csv
-artifacts/*.csv
-artifacts/features/*.npz
-.ipynb_checkpoints/
+Thumbs.db
