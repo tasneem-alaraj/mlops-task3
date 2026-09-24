@@ -1,6 +1,3 @@
-إليك محتوى ملف **`README.md`** بالكامل داخل كتلة كود موحدة حتى تتمكني من نسخه وحفظه مباشرة في جذر المشروع:
-
-```markdown
 # Olist Delivery Delay Prediction Service (Production MLOps Pipeline)
 
 An enterprise-grade, containerized machine learning inference service for predicting Brazilian e-commerce delivery delays. Refactored from experimental research notebooks (Task 2) into a robust, observable, and fully automated production system (Task 3).
